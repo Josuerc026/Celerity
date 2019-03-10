@@ -7,7 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsersService {
-  private apiURL = 'http://dev.celerity.com:5000/user';
+  private apiURL = 'https://dev.celerity.com:5000/user';
 
   constructor(
     private http: HttpClient,

@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 })
 export class FriendsService {
 
-  private apiURL = 'http://dev.celerity.com:5000/friends';
+  private apiURL = 'https://dev.celerity.com:5000/friends';
 
   constructor(private http: HttpClient) { }
 

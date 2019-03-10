@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ChallengesService {
 
-  private apiURL = 'http://dev.celerity.com:5000/challenges';
+  private apiURL = 'https://dev.celerity.com:5000/challenges';
 
   constructor(
     private http: HttpClient
