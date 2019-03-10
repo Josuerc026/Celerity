@@ -7,8 +7,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 })
 export class FriendsService {
 
-  // private apiURL = 'https://calcar.serveo.net/friends';
-  private apiURL = 'https://archa.serveo.net/friends';
+  private apiURL = 'http://dev.celerity.com:5000/friends';
 
   constructor(private http: HttpClient) { }
 

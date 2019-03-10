@@ -7,10 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ChallengesService {
 
-  // private apiURL = 'http://localhost:5000/challenges';
-  // private apiURL = 'https://celerity-dash.herokuapp.com/challenges';
-  // private apiURL = 'https://calcar.serveo.net/challenges';
-  private apiURL = 'https://archa.serveo.net/challenges';
+  private apiURL = 'http://dev.celerity.com:5000/challenges';
 
   constructor(
     private http: HttpClient

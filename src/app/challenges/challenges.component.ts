@@ -69,7 +69,6 @@ export class ChallengesComponent implements OnInit {
   getOneFriend(friend_id: string, cb): void {
     this.friendsService.getOneFriend(friend_id).subscribe(friend => {
       console.log(friend);
-
       let err = null;
       let data = null;
       if(friend.status == 'error'){

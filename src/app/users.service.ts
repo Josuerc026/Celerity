@@ -7,10 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsersService {
-  // private apiURL = 'http://localhost:5000/user';
-  // private apiURL = 'https://celerity-dash.herokuapp.com/user';
-  // private apiURL = 'https://calcar.serveo.net/user';
-  private apiURL = 'https://archa.serveo.net/user';
+  private apiURL = 'http://dev.celerity.com:5000/user';
 
   constructor(
     private http: HttpClient,
