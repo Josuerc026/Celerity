@@ -1,0 +1,69 @@
+<div class="d-flex flex-column h-100">
+    <div class="single-challenge flex-1">
+      <app-single-challenge [challenge]="singleChallenge" [friend]="singleFriend"></app-single-challenge>
+      </div>
+      <div class="challenge-menu text-right">
+        <button (click)="open(content)" class="btn btn-primary">
+          <span class="sr-only">Add Challenge</span>
+          +
+        </button>
+      </div>
+      <div class="all-challenges row flex-nowrap">
+        <div class="challenge p-2 col-4" *ngFor="let challenge of challenges">
+          <button class="btn text-left" (click)="selectSingleChallenge(challenge)">
+              <h6>{{ challenge.goal }}</h6>
+              <p class="mt-0 text-muted">{{ challenge.amount }} </p>
+          </button>
+        </div>
+      </div>
+</div>
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Create New Goal</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-7">
+            <form>
+                <div class="form-group">
+                  {{ goal }} {{ end_date }} {{ amount }}
+                  <label class="d-block">
+                    Goal Name:
+                    <input placeholder="Save $100 in 2 weeks" class="d-block form-control" [(ngModel)]="goal"  name="goal name">
+                  </label>
+                  <label class="d-block">
+                    End Date: 
+                    <input class="form-control" placeholder="mm-dd-yy" name="dp" ngbDatepicker #dp="ngbDatepicker" [(ngModel)]="end_date"  name="end date">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                    </div>
+                  </label>
+                  <label class="d-block">
+                    Amount: 
+                    <input type="number" min="1" step="any" class="form-control" [(ngModel)]="amount"  name="amount"/>
+                  </label>
+                </div>
+              </form>
+        </div>
+        <div class="col-5">
+            <p class="text-muted">Select Friend:</p>
+            <div *ngIf="friends && friends.length > 0">
+                <ul *ngFor="let friend of friends" class="list-unstyled">
+                    <li>
+                      <button (click)="selectFriend(friend)">
+                          <img [src]="friend.avatar" width="25" height="25" alt="">
+                          {{ friend.name }}
+                      </button>
+                    </li>
+                </ul>
+            </div>            
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="createChallenge()">Save</button>
+    </div>
+  </ng-template>

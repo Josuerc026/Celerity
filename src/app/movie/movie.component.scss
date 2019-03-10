@@ -1,0 +1,113 @@
+.single-movie{
+    .jumbotron{
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
+        background-size: cover !important;
+        position: relative;
+        z-index: 0;
+        &:before{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(63,94,251);
+            background: radial-gradient(circle, rgba(63,94,251,0.95) 0%, rgba(252,70,107,0.75) 100%);
+            z-index: -1;
+        }
+    }
+}
+.clear {clear: both}
+.from-me {
+	position:relative;
+	padding:10px 20px;
+	color:white; 
+	background:#0B93F6;
+	border-radius:25px;
+    float: right;
+    p{
+        margin: 0;
+    }
+	&:before {
+		content:"";
+		position:absolute;
+		z-index:-1;
+		bottom:-2px;
+		right:-7px;
+		height:20px;
+		border-right:20px solid #0B93F6;
+		border-bottom-left-radius: 16px 14px;
+		-webkit-transform:translate(0, -2px);
+	}
+
+	&:after {
+		content:"";
+		position:absolute;
+		z-index:1;
+		bottom:-2px;
+		right:-56px;
+		width:26px;
+		height:20px;
+		background:white;
+		border-bottom-left-radius: 10px;
+		-webkit-transform:translate(-30px, -2px);
+	}
+}
+.from-them {
+	position:relative;
+	padding:10px 20px;
+	background:#E5E5EA;
+	border-radius:25px;
+	color: black;
+    float: left;
+    p{
+        margin: 0;
+    }
+		
+	&:before {
+		content:"";
+		position:absolute;
+		z-index:2;
+		bottom:-2px;
+		left:-7px;
+		height:20px;
+		border-left:20px solid #E5E5EA;
+		border-bottom-right-radius: 16px 14px;
+		-webkit-transform:translate(0, -2px);
+	}
+
+	&:after {
+		content:"";
+		position:absolute;
+		z-index:3;
+		bottom:-2px;
+		left:4px;
+		width:26px;
+		height:20px;
+		background:white;
+		border-bottom-right-radius: 10px;
+		-webkit-transform:translate(-30px, -2px);
+	}
+}
+.preview-block{
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    z-index: 0;
+    position: relative;
+    transition: 0.4s all;
+    &:before{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        height: 100%;
+        background: rgb(63,94,251);
+        background: radial-gradient(circle, rgba(63,94,251,0.95) 0%, rgba(252,70,107,0.75) 100%);
+        z-index: -1;
+        border-radius: inherit;
+    }
+}

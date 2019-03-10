@@ -1,0 +1,81 @@
+<div *ngIf="movie" class="preview-block rounded flip-in-hor-bottom" [style.background]="'url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2/' + movie.background + ')'">
+    <div class="content p-5 text-white">
+        <h3><a routerLink="/movie/{{movie.id}}" class="text-white">{{movie.title}}</a></h3>
+        <small>{{movie.release}}</small>
+        <br/>
+        <div style="min-height: 80px">
+            <div *ngIf="time && time.d > 0" class="countdown d-flex justify-content-between fade-in">
+                <div>
+                    <span class="d-block text-center h3">{{ time.d < 10 ? ("0" + time.d) : (time.d) }} </span>
+                    <span class="unit-label d-block text-center">Days</span>
+                </div>
+                <div>
+                    <span class="d-block text-center h3">{{ time.h < 10 ? ("0" + time.h) : (time.h) }}</span>
+                    <span class="unit-label d-block text-center">Hours</span>
+                </div>
+                <div>
+                    <span class="d-block text-center h3">{{ time.m < 10 ? ("0" + time.m) : (time.m) }} </span>
+                    <span class="unit-label d-block text-center">Minutes</span>
+                </div>
+                <div>
+                    <span class="d-block text-center h3">{{ time.s < 10 ? ("0" + time.s) : (time.s) }}</span>
+                    <span class="unit-label d-block text-center">Seconds</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="movieDetails && !movie" class="single-movie">
+    <app-navigation [user]="user" (signedOut)="signOut($event)"></app-navigation>
+    <div class="jumbotron jumbotron-fluid" [style.background]="'url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2/' + movieDetails.backdrop_path +')'">
+        <div class="container">
+            <h1 class="display-4 text-white" *ngIf="movieDetails && !movie">{{ movieDetails.title }}</h1>
+            <p>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&trp=false&text={{ movieDetails.title }}&dates={{ movieDetails.release.split('-').join('') }}/{{ movieDetails.release.split('-').join('') }}&details={{ movieDetails.description }}" target="_blank" class="btn btn-outline-light">Add to Google Calendar</a>
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-5" style="min-height: 65px;">
+                    <div *ngIf="time && time.d > 0" class="countdown d-flex justify-content-between fade-in">
+                            <div>
+                                <span class="d-block text-center h3">{{ time.d < 10 ? ("0" + time.d) : (time.d) }} </span>
+                                <span class="unit-label d-block text-center">Days</span>
+                            </div>
+                            <div>
+                                <span class="d-block text-center h3">{{ time.h < 10 ? ("0" + time.h) : (time.h) }}</span>
+                                <span class="unit-label d-block text-center">Hours</span>
+                            </div>
+                            <div>
+                                <span class="d-block text-center h3">{{ time.m < 10 ? ("0" + time.m) : (time.m) }} </span>
+                                <span class="unit-label d-block text-center">Minutes</span>
+                            </div>
+                            <div>
+                                <span class="d-block text-center h3">{{ time.s < 10 ? ("0" + time.s) : (time.s) }}</span>
+                                <span class="unit-label d-block text-center">Seconds</span>
+                            </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-6">
+                    <p>{{ movieDetails.description }} </p>
+            </div>
+            <div class="col-lg-6">
+                <h3>Discussions</h3>
+                <div class="from-me">
+                    <p>Are you guys up for it?</p>
+                </div>
+                <div class="clear"></div>
+                    <div class="from-them">
+                    <p>Are we seeing this opening night?</p>
+                    </div>
+                <div class="clear"></div>
+                    <div class="from-me">
+                    <p>Oohhh</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

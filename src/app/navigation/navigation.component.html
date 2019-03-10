@@ -1,0 +1,13 @@
+<nav class="navbar justify-content-between">
+    <h3 class="navbar-brand font-weight-light">celerity</h3>
+    <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+      <button class="btn btn-outline-primary" ngbDropdownToggle>
+        <img src="{{ user.photoUrl }}" class="rounded-circle" width="30" *ngIf="user">
+      </button>
+      <div class="dropdown-menu" ngbDropdownMenu>
+        <button (click)="signOut(true)" class="btn btn-sm" *ngIf="user">Sign out</button>
+      </div>
+    </div>
+</nav>
+
+

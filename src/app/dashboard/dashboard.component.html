@@ -1,0 +1,13 @@
+<app-navigation [user]="user" (signedOut)="signOut($event)"></app-navigation>
+<div class="container-fluid dashboard-wrap">
+  <div class="row h-100">
+    <div class="col-4 h-100">
+        <div class="user" style="height: 60px;">
+          <h4 class="font-weight-light user-greeting" *ngIf="user">{{greeting}}, {{user.name.split(' ')[0]}}</h4>
+        </div>
+    </div>
+    <div class="col-8 h-100">
+        <app-challenges></app-challenges>
+    </div>
+  </div>  
+</div>

@@ -1,0 +1,24 @@
+<div *ngIf="challenge">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="display-4">{{challenge.goal}}</h1>
+    </div>
+    <div class="col-5">
+      <div class="text-center">
+          <p class="m-0 h5"><i>You</i></p>
+          <span class="text-muted d-block my-1">VS.</span>
+          <div *ngIf="friend">
+              <img [src]="friend.avatar" width="25" height="25">
+              <span class="px-1">{{ friend.name }} </span>
+          </div>
+      </div>
+      <hr>
+      <div class="amount-container bg-info text-white p-2 mt-3">
+         <span class="h1">${{ challenge.amount }}</span>
+      </div>
+    </div>
+    <div class="col-7">
+      <p>Goal ends: <span class="h2 font-weight-light">{{ challenge.end_date }}</span></p>
+    </div>
+  </div>
+</div>

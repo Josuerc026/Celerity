@@ -1,0 +1,17 @@
+@keyframes show{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.user{
+    .user-greeting{
+        animation: show 0.55s ease-in-out;
+        transition: 0.25s all;
+    }
+}
+.dashboard-wrap{
+    height: calc(100% - 64px);
+}
