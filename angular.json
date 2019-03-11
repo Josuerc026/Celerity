@@ -63,6 +63,7 @@
           "options": {
             "browserTarget": "ng-wiico:build",
             "disableHostCheck": true,
+            "ssl": true,
             "sslKey": "../certificates/server.key",
             "sslCert": "../certificates/server.crt"
           },
