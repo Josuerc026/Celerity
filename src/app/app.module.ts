@@ -19,6 +19,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { CustomInterceptor } from './http-interceptor';
 import { ChallengesComponent } from './challenges/challenges.component';
 import { SingleChallengeComponent } from './single-challenge/single-challenge.component';
+import { FriendsComponent } from './friends/friends.component';
 
 let config = new AuthServiceConfig([
   {
@@ -39,7 +40,8 @@ export function provideConfig() {
     LoginComponent,
     NavigationComponent,
     ChallengesComponent,
-    SingleChallengeComponent
+    SingleChallengeComponent,
+    FriendsComponent
   ],
   imports: [
     BrowserModule,

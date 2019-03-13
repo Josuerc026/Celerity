@@ -11,9 +11,9 @@ export class FriendsService {
 
   constructor(private http: HttpClient) { }
 
-  addFriend(data: object): Observable<any>{
-    const request = this.apiURL + '/save';
-    return this.http.post(request, data, {
+  addFriend(id: string): Observable<any>{
+    const request = this.apiURL + '/save/' + id;
+    return this.http.post(request, null, {
       withCredentials: true,
       responseType: 'text'
     });
@@ -28,6 +28,13 @@ export class FriendsService {
 
   getFriends(): Observable<any>{
     const request = this.apiURL + '/all';
+    return this.http.get<any>(request, {
+      withCredentials: true
+    });
+  }
+
+  findFriends(query: string): Observable<any>{
+    const request = this.apiURL + '/find/' + query;
     return this.http.get<any>(request, {
       withCredentials: true
     });

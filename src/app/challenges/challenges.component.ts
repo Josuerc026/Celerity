@@ -83,21 +83,8 @@ export class ChallengesComponent implements OnInit {
     });
   }
 
-  addFriend(): void {
-    let newFriend = {
-      friend_id: '5c7df5bf41de9b7210305535',
-      avatar: 'https://image.flaticon.com/icons/png/128/181/181549.png',
-      name: 'test toasting'
-    }
-    this.friendsService.addFriend(newFriend).subscribe(confirmation => {
-      console.log(confirmation);
-    });
-
-    this.getFriends();
-  }
-
   selectFriend(friend: any){
-    this.newChallenge['friend'] = friend.friend_id;
+    this.newChallenge['friend'] = friend.id;
     console.log(this.newChallenge);
   }
 
