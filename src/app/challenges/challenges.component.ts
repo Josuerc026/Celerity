@@ -28,34 +28,37 @@ export class ChallengesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getAllChallenges();
+    this.getChallenges();
   }
   
   createChallenge() : void {
 
-    this.newChallenge['goal'] = this.goal;
+    this.newChallenge['title'] = this.goal;
     this.newChallenge['end_date'] = this.end_date;
     this.newChallenge['amount'] = this.amount.toString();
 
     this.challengesService.createChallenge(this.newChallenge).subscribe(confirmation => {
       console.log('CREATION:', confirmation);
-      this.getAllChallenges();
+      this.getChallenges();
       this.modalService.dismissAll();
     });
   }
 
-  getAllChallenges(): void {
-    this.challengesService.getAllChallenges().subscribe(challenges => {
+  getChallenges(challengeId?: string): void {
+
+    this.challengesService
+      .getChallenges(challengeId)
+      .subscribe( challenges => {
       console.log(challenges);
       this.challenges = challenges;
       this.singleChallenge = challenges[0];
-      this.getOneFriend(challenges[0].friend, (err, friend) => {
-        if(!err){
-          this.singleFriend = friend;
-        }else{
-          this.singleFriend = null;
-        }
-      });
+      // this.getOneFriend(challenges[0].friend, (err, friend) => {
+      //   if(!err){
+      //     this.singleFriend = friend;
+      //   }else{
+      //     this.singleFriend = null;
+      //   }
+      // });
     });
   }
 
@@ -84,7 +87,7 @@ export class ChallengesComponent implements OnInit {
   }
 
   selectFriend(friend: any){
-    this.newChallenge['friend'] = friend.id;
+    this.newChallenge['participants'] = [ friend.id ];
     console.log(this.newChallenge);
   }
 

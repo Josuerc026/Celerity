@@ -22,8 +22,11 @@ export class ChallengesService {
     });
   }
 
-  getAllChallenges(): Observable<any>{
-    const request = this.apiURL + `/all`;
+  getChallenges(challengeId?: string): Observable<any>{
+    const request = this.apiURL + `/` + (
+      challengeId ? challengeId : ''
+    );
+    
     return this.http.get<any>(request, {
       withCredentials: true
     });
