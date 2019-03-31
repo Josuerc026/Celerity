@@ -1,7 +1,7 @@
 <div *ngIf="challenge">
   <div class="row">
     <div class="col-12">
-      <h1 class="display-4">{{challenge.goal}}</h1>
+      <h1 class="display-4">{{challenge.title}}</h1>
     </div>
     <div class="col-5">
       <div class="text-center">
@@ -19,6 +19,10 @@
     </div>
     <div class="col-7">
       <p>Goal ends: <span class="h2 font-weight-light">{{ challenge.end_date }}</span></p>
+      <button (click)="delete()" class="btn btn-danger">
+          <span class="sr-only">Delete Challenge</span>
+          -
+        </button>
     </div>
   </div>
 </div>

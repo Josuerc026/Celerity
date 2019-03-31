@@ -26,9 +26,18 @@ export class ChallengesService {
     const request = this.apiURL + `/` + (
       challengeId ? challengeId : ''
     );
-    
+
     return this.http.get<any>(request, {
       withCredentials: true
+    });
+  }
+
+  deleteChallenge(id: String): Observable<any>{
+    const request = this.apiURL + `/delete/` + id;
+
+    return this.http.get(request, {
+      withCredentials: true,
+      responseType: 'text'
     });
   }
 }
