@@ -30,12 +30,17 @@ export class ChallengesComponent implements OnInit {
   ngOnInit() {
     this.getChallenges();
   }
-  
+
   createChallenge() : void {
 
     this.newChallenge['title'] = this.goal;
     this.newChallenge['end_date'] = this.end_date;
     this.newChallenge['amount'] = this.amount.toString();
+
+    if ( ! this.newChallenge.hasOwnProperty('participants') )
+    {
+      return alert('no participant selected!');
+    }
 
     this.challengesService.createChallenge(this.newChallenge).subscribe(confirmation => {
       console.log('CREATION:', confirmation);
@@ -60,6 +65,13 @@ export class ChallengesComponent implements OnInit {
       //   }
       // });
     });
+  }
+
+  onChallengeDeleted(e: any){
+    console.log('DELETED STATE', e);
+    if(!e) return;
+
+    this.getChallenges();
   }
 
   getFriends(): void {

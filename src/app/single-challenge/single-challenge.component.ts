@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ChallengesService } from '../challenges.service';
 
 @Component({
   selector: 'app-single-challenge',
@@ -7,12 +8,27 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SingleChallengeComponent implements OnInit {
 
-  @Input() challenge: object = null;
+  @Input() challenge: any = null;
   @Input() friend: any = null;
+  @Output() deleted = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(
+    private challengeService: ChallengesService
+  ) { }
 
   ngOnInit() {
+  }
+
+  delete(): void {
+    if(this.challenge.hasOwnProperty('_id')){
+      let id: string = this.challenge._id;
+
+      this.challengeService.deleteChallenge(id)
+        .subscribe(confirmation => {
+          console.log(confirmation);
+          this.deleted.emit(true);
+        });
+    }
   }
 
 }

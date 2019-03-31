@@ -1,6 +1,6 @@
 <div class="d-flex flex-column h-100">
     <div class="single-challenge flex-1">
-      <app-single-challenge [challenge]="singleChallenge" [friend]="singleFriend"></app-single-challenge>
+      <app-single-challenge [challenge]="singleChallenge" [friend]="singleFriend" (deleted)="onChallengeDeleted($event)"></app-single-challenge>
       </div>
       <div class="challenge-menu text-right">
         <button (click)="open(content)" class="btn btn-primary">
@@ -35,14 +35,14 @@
                     <input placeholder="Save $100 in 2 weeks" class="d-block form-control" [(ngModel)]="goal"  name="goal name">
                   </label>
                   <label class="d-block">
-                    End Date: 
+                    End Date:
                     <input class="form-control" placeholder="mm-dd-yy" name="dp" ngbDatepicker #dp="ngbDatepicker" [(ngModel)]="end_date"  name="end date">
                     <div class="input-group-append">
                       <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
                     </div>
                   </label>
                   <label class="d-block">
-                    Amount: 
+                    Amount:
                     <input type="number" min="1" step="any" class="form-control" [(ngModel)]="amount"  name="amount"/>
                   </label>
                 </div>
@@ -59,7 +59,7 @@
                       </button>
                     </li>
                 </ul>
-            </div>            
+            </div>
         </div>
       </div>
     </div>
