@@ -15,9 +15,11 @@ export class ChallengesComponent implements OnInit {
   singleFriend: any;
   closeResult: string;
   friends: any = null;
+  editDesc: boolean = false;
 
   goal: string;
   end_date: string;
+  description: string;
   amount: string;
   newChallenge: object = {};
 
@@ -34,6 +36,7 @@ export class ChallengesComponent implements OnInit {
   createChallenge() : void {
 
     this.newChallenge['title'] = this.goal;
+    this.newChallenge['description'] = this.description;
     this.newChallenge['end_date'] = this.end_date;
     this.newChallenge['amount'] = this.amount.toString();
 

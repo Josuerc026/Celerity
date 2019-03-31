@@ -34,6 +34,11 @@
                     Goal Name:
                     <input placeholder="Save $100 in 2 weeks" class="d-block form-control" [(ngModel)]="goal"  name="goal name">
                   </label>
+                  <label>
+                    Description:
+                    <p *ngIf="!editDesc" (click)="editDesc = true">{{ description ? description : 'No Description' }}</p>
+                    <textarea [(ngModel)]="description" *ngIf="editDesc" (focusout)="editDesc = false" name="description"></textarea>
+                  </label>
                   <label class="d-block">
                     End Date:
                     <input class="form-control" placeholder="mm-dd-yy" name="dp" ngbDatepicker #dp="ngbDatepicker" [(ngModel)]="end_date"  name="end date">
