@@ -18,7 +18,12 @@ export class ChallengesComponent implements OnInit {
   editDesc: boolean = false;
 
   goal: string;
-  end_date: string;
+  end_date: {
+    year: number,
+    month: number,
+    day: number
+  };
+  endDate: string;
   description: string;
   amount: string;
   newChallenge: object = {};
@@ -37,7 +42,7 @@ export class ChallengesComponent implements OnInit {
 
     this.newChallenge['title'] = this.goal;
     this.newChallenge['description'] = this.description;
-    this.newChallenge['end_date'] = this.end_date;
+    this.newChallenge['end_date'] = this.endDate;
     this.newChallenge['amount'] = this.amount.toString();
 
     if ( ! this.newChallenge.hasOwnProperty('participants') )
@@ -115,6 +120,15 @@ export class ChallengesComponent implements OnInit {
         this.singleFriend = null;
       }
     });
+  }
+
+  parseDate(): void{
+    if(this.end_date === null){
+      return;
+    }
+
+    let { year, month, day } = this.end_date;
+    this.endDate = `${month}/${day}/${year}`;
   }
 
   //////////// UTILITY METHODS ////////////////
