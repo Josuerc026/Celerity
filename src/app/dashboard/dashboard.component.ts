@@ -13,7 +13,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  
+
   movies = [];
   movie: any;
   movieQuery: string;
@@ -78,7 +78,7 @@ export class DashboardComponent implements OnInit {
         return tod;
       }
     });
-    
+
     this.greeting = timeOfDay[0][1].greeting;
   }
 
