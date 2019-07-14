@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChallengesService } from '../challenges.service';
 import { FriendsService } from '../friends.service';
-import {NotificationsService} from '../notifications.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -32,18 +31,11 @@ export class ChallengesComponent implements OnInit {
   constructor(
     private challengesService: ChallengesService,
     private friendsService: FriendsService,
-    private notificationService: NotificationsService,
     private modalService: NgbModal
   ) { }
 
   ngOnInit() {
     this.getChallenges();
-    this.notificationService.getNotifications().subscribe(notifs => {
-      console.log(notifs);
-    });
-    this.notificationService.getNotificationsByUser().subscribe(notifs => {
-      console.log(notifs);
-    });
   }
 
   createChallenge() : void {

@@ -20,6 +20,7 @@ import { CustomInterceptor } from './http-interceptor';
 import { ChallengesComponent } from './challenges/challenges.component';
 import { SingleChallengeComponent } from './single-challenge/single-challenge.component';
 import { FriendsComponent } from './friends/friends.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 let config = new AuthServiceConfig([
   {
@@ -41,7 +42,8 @@ export function provideConfig() {
     NavigationComponent,
     ChallengesComponent,
     SingleChallengeComponent,
-    FriendsComponent
+    FriendsComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,

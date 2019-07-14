@@ -6,9 +6,11 @@
           <h4 class="font-weight-light user-greeting" *ngIf="user">{{greeting}}, {{user.name.split(' ')[0]}}</h4>
         </div>
         <app-friends></app-friends>
+        <hr/>
+        <app-notifications></app-notifications>
     </div>
     <div class="col-8 h-100">
         <app-challenges></app-challenges>
     </div>
-  </div>  
+  </div>
 </div>

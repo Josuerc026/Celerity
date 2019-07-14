@@ -1,0 +1,14 @@
+<p>Notifcations for you ({{ allNotifications.length }})</p>
+<div *ngIf="allNotifications.length">
+  <ul *ngFor="let notifs of allNotifications">
+    <li>{{ notifs.type }} <br/> {{notifs.type == 'challenge-deletion' ? 'A deletion request has been submitted' : 'notification message test' }}</li>
+  </ul>
+</div>
+<div *ngIf="!allNotifications.length">
+  <p class="text-muted">No notifications</p>
+</div>
+<hr/>
+<p>Notifcations you submitted ({{ userCreatedNotifications.length }})</p>
+<ul *ngFor="let userNotifs of userCreatedNotifications">
+  <li>{{ userNotifs.type }} <br/> {{userNotifs.type == 'challenge-deletion' ? 'A deletion request has been submitted' : 'notification message test' }}</li>
+</ul>
