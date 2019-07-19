@@ -7,10 +7,21 @@
         </div>
         <app-friends></app-friends>
         <hr/>
-        <app-notifications></app-notifications>
     </div>
     <div class="col-8 h-100">
-        <app-challenges></app-challenges>
+      <ngb-tabset #t="ngbTabset" (tabChange)="tabRouting($event)" activeId="tab-{{activatedRoute.snapshot.queryParams['tab']}}">
+        <ngb-tab title="Challenges" id="tab-challenges">
+          <ng-template ngbTabContent>
+            <app-challenges></app-challenges>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab id="tab-notifications">
+          <ng-template ngbTabTitle>Notifications</ng-template>
+          <ng-template ngbTabContent>
+            <app-notifications></app-notifications>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
     </div>
   </div>
 </div>

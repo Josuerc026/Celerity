@@ -1,11 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MovieComponent } from '../movie/movie.component';
 import { LoginComponent } from '../login/login.component';
 import { MoviesService } from '../movies.service';
 import { AuthService } from "angularx-social-login";
 import { UsersService } from "../users.service";
 import { GoogleLoginProvider } from "angularx-social-login";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { NgbTabChangeEvent, NgbTabset } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  @ViewChild('t') tabs:NgbTabset;
   movies = [];
   movie: any;
   movieQuery: string;
@@ -25,6 +26,7 @@ export class DashboardComponent implements OnInit {
     private movieService: MoviesService,
     private authService: AuthService,
     private userServive: UsersService,
+    private activatedRoute: ActivatedRoute,
     private router: Router
     ) { }
 
@@ -82,18 +84,16 @@ export class DashboardComponent implements OnInit {
     this.greeting = timeOfDay[0][1].greeting;
   }
 
-  getMovie(e: any): void{
-    if(e.which != 13) return;
-
-    const query = encodeURI(this.movieQuery);
-    this.movieService.getMovie(query)
-    .subscribe(movie => this.movies.push({
-      id: movie.results[0].id,
-      title: movie.results[0].title,
-      description: movie.results[0].overview,
-      release: movie.results[0].release_date,
-      background: movie.results[0].backdrop_path
-    }));
+  tabRouting(event: NgbTabChangeEvent){
+    this.router.navigate(
+      [], 
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: { tab: event.nextId.split('tab-').pop() }, 
+        queryParamsHandling: 'merge', // remove to replace all query params by provided
+      });
   }
+
+
 
 }
