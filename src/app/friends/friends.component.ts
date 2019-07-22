@@ -29,11 +29,16 @@ export class FriendsComponent implements OnInit {
   saveFriend(id: string): void {
     this.friendsService.addFriend(id).subscribe(confirmation => {
       console.log(confirmation);
+      this.userResults = [];
+      this.getFriends();
     });
   }
 
   findFriends(e): void {
-    if(e.which !== 13 || e.target.value === "") return;
+    if(!e.target.value || e.target.value.indexOf(' ') >= 0){
+      this.userResults = [];
+      return;
+    }
 
     const query = e.target.value;
     this.friendsService.findFriends(query).subscribe(users => {
