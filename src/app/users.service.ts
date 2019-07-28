@@ -22,10 +22,21 @@ export class UsersService {
     });
   }
 
+  authState(): Observable<any>{
+    const request = this.apiURL + `/is-logged-in`;
+
+    return this.http.get(request, {
+      withCredentials: true,
+      responseType: 'text'
+    });
+  }
+
   logout(): Observable<any>{
     const request = this.apiURL + '/logout';
+    
     return this.http.post(request, null, {
-      withCredentials: true
+      withCredentials: true,
+      responseType: 'text'
     });
   }
 }

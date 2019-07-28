@@ -25,27 +25,44 @@ export class DashboardComponent implements OnInit {
   constructor(
     private movieService: MoviesService,
     private authService: AuthService,
-    private userServive: UsersService,
+    private userService: UsersService,
     private activatedRoute: ActivatedRoute,
     private router: Router
     ) { }
 
   ngOnInit() {
     this.getTimeOfDay();
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = (user != null);
-      if(!this.loggedIn){
-        this.router.navigate(['/login']);
+
+    // this.authService.authState.subscribe((user) => {
+    //   this.user = user;
+    //   console.log('AUTHSTATE');
+    //   this.loggedIn = (user != null);
+    //   if(!this.loggedIn){
+    //     this.router.navigate(['/login']);
+    //   }
+    // });
+
+    this.userService.authState().subscribe((res) => {
+      console.log('RESPONSE', res);
+      if(!res) return;
+      let user = JSON.parse(res);
+      if(user){
+        this.user = user;
       }
     });
   }
 
   signOut(signedOut: boolean): void {
     if(!signedOut) return;
-    this.authService.signOut();
-    this.userServive.logout().subscribe(confirmation => {
+
+    this.userService.logout().subscribe(confirmation => {
       console.log(confirmation);
+      this.router.navigate(['/login']);
+    });
+    this.authService.authState.subscribe((user) => {
+      if(user != null){
+        this.authService.signOut();
+      }
     });
   }
 
@@ -93,7 +110,4 @@ export class DashboardComponent implements OnInit {
         queryParamsHandling: 'merge', // remove to replace all query params by provided
       });
   }
-
-
-
 }
