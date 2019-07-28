@@ -13,6 +13,9 @@ export class LoginComponent implements OnInit {
 
   user: object;
   loggedIn: boolean = false;
+  isSocialTab: boolean = true;
+  username: string = null;
+  password: string = null;
     
   constructor(
     private authService: AuthService,
@@ -35,6 +38,13 @@ export class LoginComponent implements OnInit {
         });
       }
     });
+    this.usersService.authState().subscribe((res) => {
+      if(!res) return;
+      let user = JSON.parse(res);
+      if(user){
+        this.user = user;
+      }
+    });
   }
 
   getUser(user: object): void {
@@ -47,4 +57,16 @@ export class LoginComponent implements OnInit {
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
+
+  signInWithAccount(): void{
+    this.getUser({
+      email: this.username,
+      password: this.password,
+      is_google: false
+    });
+  }
+
+  // switchTab(event): void {
+  //   this.isSocialTab = !this.isSocialTab;
+  // }
 }
