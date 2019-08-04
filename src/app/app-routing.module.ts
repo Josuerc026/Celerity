@@ -6,9 +6,8 @@ import { NotificationsComponent} from './notifications/notifications.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent},
-  { path: 'dashboard', component: DashboardComponent},
+  { path: 'login', redirectTo: '', pathMatch: 'full' },
+  { path: '', component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'movie/:id', component: MovieComponent},
 ];

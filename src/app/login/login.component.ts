@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { UsersService } from '../users.service';
@@ -13,9 +14,9 @@ export class LoginComponent implements OnInit {
 
   user: object;
   loggedIn: boolean = false;
-  isSocialTab: boolean = true;
   username: string = null;
   password: string = null;
+  isRegistration: boolean = false;
     
   constructor(
     private authService: AuthService,
@@ -23,6 +24,12 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) { }
 
+  registerForm = new FormGroup({
+    firstname: new FormControl(''),
+    lastname: new FormControl(''),
+    email: new FormControl(''),
+    password: new FormControl(''),
+  });
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = user;
@@ -66,7 +73,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // switchTab(event): void {
-  //   this.isSocialTab = !this.isSocialTab;
-  // }
+  createAccount(): void {
+    this.getUser(Object.assign({is_google: false}, this.registerForm.value));
+  }
+
+  switchPanel(event): void {
+    this.isRegistration = !this.isRegistration;
+  }
 }

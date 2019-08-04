@@ -10,6 +10,7 @@ import {NotificationsService} from '../notifications.service';
 export class NotificationsComponent implements OnInit {
   private allNotifications: Array<any> = [];
   private userCreatedNotifications: Array<any> = [];
+  public test: string = 'test';
   constructor(
     private notificationService: NotificationsService,
   ) { }

@@ -8,7 +8,7 @@ import { MovieComponent } from './movie/movie.component';
 
 import { CountdownModule } from 'ngx-countdown';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
@@ -52,7 +52,8 @@ export function provideConfig() {
     HttpClientModule,
     FormsModule,
     SocialLoginModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
