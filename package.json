@@ -23,7 +23,7 @@
     "angularx-social-login": "^1.2.6",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
-    "googleapis": "^37.2.0",
+    "googleapis": "^39.1.0",
     "ng2-date-countdown": "^1.0.3",
     "ngx-countdown": "^3.2.0",
     "rxjs": "~6.3.3",
